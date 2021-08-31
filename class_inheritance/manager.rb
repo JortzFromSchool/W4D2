@@ -1,7 +1,8 @@
 require_relative "employee.rb"
 
 class Manager < Employee
-    def initialize
+    def initialize(name, title, salary, boss)
+        super
         @employees = []
     end
 
@@ -9,6 +10,9 @@ class Manager < Employee
         total = 0
         employees.each do |employee|
             total += employee.salary
+            if employee.is_a?(Manager)
+                total += employee.bonus(1)
+            end
         end
         return total * multiplier
     end
