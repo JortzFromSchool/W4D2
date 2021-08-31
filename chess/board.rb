@@ -62,7 +62,9 @@ class Board
 
     def move_piece(start_pos, end_pos)
         raise "invalid starting position" if self[start_pos].is_a?(NullPiece)
-        raise "end position not within limits" unless end_pos[0] >= 0 && end_pos[0] < 8 && end_pos[1] >= 0 && end_pos[1] < 8
+        raise "end position not within limits" unless (end_pos[0] >= 0 && end_pos[0] < 8 && end_pos[1] >= 0 && end_pos[1] < 8)
+        raise "start position not within limits" unless (start_pos[0] >= 0 && start_pos[0] < 8 && start_pos[1] >= 0 && start_pos[1] < 8)
+        
         self[end_pos] = self[start_pos]
         self[start_pos] = NullPiece.new
     end
