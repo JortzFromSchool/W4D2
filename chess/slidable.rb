@@ -11,9 +11,14 @@ module Slidable
         # or until we're off the board and add all those moves to our return array
         directions.each do |direction|
             x , y = @position[0], @position[1]
-            until (x < 0 || x > 7 || y < 0 || y > 7)
+            until (x <= 0 || x >= 7 || y <= 0 || y >= 7)
                 x += direction[0]
                 y += direction[1]
+                # puts "x, y = "
+                # puts x.to_s 
+                # puts y.to_s
+                # puts "self.board[x,y].color = " 
+                # puts self.board[[x, y]].color
                 if self.board[[x, y]].is_a?(NullPiece)
                     #space is empty
                     results << [x,y]
