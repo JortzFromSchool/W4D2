@@ -14,10 +14,10 @@ module Slidable
             until (x < 0 || x > 7 || y < 0 || y > 7)
                 x += direction[0]
                 y += direction[1]
-                if @board[x][y].is_a?(NullPiece)
+                if self.board[[x, y]].is_a?(NullPiece)
                     #space is empty
                     results << [x,y]
-                elsif self.color == @board[x][y].color
+                elsif self.color == self.board[[x, y]].color
                     #space is blocked
                     break
                 else
