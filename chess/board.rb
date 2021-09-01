@@ -132,7 +132,7 @@ class Board
         b = Board.new 
         b.board.each_with_index do |row, i|
             row.each_with_index do |piece, j|
-                if piece.is_a?(NullPiece)
+                if self[[i,j]].is_a?(NullPiece)
                     b[[i,j]] = NullPiece.instance
                 else
                     b[[i,j]] = self[[i,j]].dup
@@ -146,12 +146,12 @@ class Board
     attr_accessor :board
 end
 
-b = Board.new
+# b = Board.new
 # b.move_piece([6,5],[5,5]) #f2 -> f3
 # b.move_piece([1,4], [3,4]) #e7 -> e5
 # b.move_piece([6,6],[4,6]) #g2 -> g4
 # b.move_piece([0,3], [4,7]) #d8 -> h4
-c = b.dup
-c.move_piece([6,5],[5,5]) 
+# c = b.dup
+# c.move_piece([6,5],[5,5]) 
 
 
