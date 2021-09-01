@@ -76,8 +76,32 @@ class Cursor
   end
 
   def handle_key(key)
+    case key
+    when :return 
+      return @cursor_pos
+    when :space
+      return @cursor_pos
+    when :left
+      update_pos(MOVES[:left]) 
+    when :right
+      update_pos(MOVES[:right])  
+    when :up
+      update_pos(MOVES[:up])
+    when :down
+      update_pos(MOVES[:down])
+    when :ctrl_c
+      Process.exit(0)
+    end
   end
 
   def update_pos(diff)
+    if valid_pos?([@cursor_pos[0] + diff[0], @cursor_pos[1] + diff[1]])
+      @cursor_pos[0] += diff[0]
+      @cursor_pos[1] += diff[1]
+    end
+  end
+
+  def valid_pos?(pos)
+    return pos[0] >= 0 && pos[0] < 8 && pos[1] >= 0 && pos[1] < 8
   end
 end
