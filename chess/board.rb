@@ -47,7 +47,7 @@ class Board
         @board[7][4] = King.new([7,4],"white", self, :K)
         j = 0
         until j == 8
-            @board[6][j] = Pawn.new([6,i],"white", self, :P)
+            @board[6][j] = Pawn.new([6,j],"white", self, :P)
             j += 1
         end
     end
