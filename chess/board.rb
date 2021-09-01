@@ -8,15 +8,15 @@ class Board
         @board[0][0] = Rook.new([0,0], "black", self, :R)
         @board[0][7] = Rook.new([0,7], "black", self, :R)
         #black knights
-        @board[0][1] = Knight.new([0,1], "black", self, :Kn)
-        @board[0][6] = Knight.new([0,6], "black", self, :Kn)
+        @board[0][1] = Knight.new([0,1], "black", self, :N)
+        @board[0][6] = Knight.new([0,6], "black", self, :N)
         #black bishops
         @board[0][2] = Bishop.new([0,2],"black", self, :B)
         @board[0][5] = Bishop.new([0,5],"black", self, :B)
         #black queen
-        @board[0][4] = Queen.new([0,4],"black", self, :Q)
+        @board[0][3] = Queen.new([0,3],"black", self, :Q)
         #black king
-        @board[0][3] = King.new([0,3],"black", self, :K)
+        @board[0][4] = King.new([0,4],"black", self, :K)
         i = 0
         #black pawns
         until i == 8
@@ -36,15 +36,15 @@ class Board
         @board[7][0] = Rook.new([7,0],"white", self, :R)
         @board[7][7] = Rook.new([7,7],"white", self, :R)
         #white knights
-        @board[7][1] = Knight.new([7,1],"white", self, :Kn)
-        @board[7][6] = Knight.new([7,6],"white", self, :Kn)
+        @board[7][1] = Knight.new([7,1],"white", self, :N)
+        @board[7][6] = Knight.new([7,6],"white", self, :N)
         #white bishops
         @board[7][2] = Bishop.new([7,2],"white", self, :B)
         @board[7][5] = Bishop.new([7,5],"white", self, :B)
         #queen
-        @board[7][4] = Queen.new([7,3],"white", self, :Q)
+        @board[7][3] = Queen.new([7,3],"white", self, :Q)
         #king
-        @board[7][3] = King.new([7,4],"white", self, :K)
+        @board[7][4] = King.new([7,4],"white", self, :K)
         j = 0
         until j == 8
             @board[6][j] = Pawn.new([6,i],"white", self, :P)
