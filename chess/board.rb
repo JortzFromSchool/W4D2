@@ -95,7 +95,36 @@ class Board
     end
 
     def checkmate?(color)
-        
+        return false unless in_check?(color)
+
+        king_pos = nil
+        @board.each do |row|
+            row.each do |piece|
+                if piece.is_a?(King) && piece.color == color
+                    king_pos = piece.position
+                end
+            end
+        end
+
+        king = self[king_pos]
+        pos_moves = king.moves 
+
+        pos_moves.each do |move|
+            possible = true
+
+            @board.each do |row|
+                row.each do |piece|
+                    unless piece.color == color || piece.is_a?(NullPiece)
+                        if piece.moves.include?(move)
+                            possible = false
+                        end
+                    end
+                end
+            end
+
+            return true unless possible
+        end
+        return false
     end
     
     attr_reader :board
@@ -107,3 +136,4 @@ end
 # b.move_piece([6,6],[4,6]) #g2 -> g4
 # b.move_piece([0,3], [4,7]) #d8 -> h4
 # puts b.in_check?("white")
+# puts b.checkmate?("white")
