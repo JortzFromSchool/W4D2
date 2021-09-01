@@ -9,5 +9,5 @@ class Piece
     #     return nil
     # end
     attr_reader :color
-    attr_accessor :position
+    attr_accessor :position, :board
 end

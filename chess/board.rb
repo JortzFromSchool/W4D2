@@ -129,22 +129,29 @@ class Board
 
     def dup
         #create a new board
-        @board.map do |row|
-            row.map do |piece|
-                return piece # has an @board instance variable that == original board
+        b = Board.new 
+        b.board.each_with_index do |row, i|
+            row.each_with_index do |piece, j|
+                if piece.is_a?(NullPiece)
+                    b[[i,j]] = NullPiece.instance
+                else
+                    b[[i,j]] = self[[i,j]].dup
+                    b[[i,j]].board = b
+                end
             end
         end
-
-        return new_board
+        return b
     end
     
     attr_accessor :board
 end
 
-# b = Board.new
+b = Board.new
 # b.move_piece([6,5],[5,5]) #f2 -> f3
 # b.move_piece([1,4], [3,4]) #e7 -> e5
 # b.move_piece([6,6],[4,6]) #g2 -> g4
 # b.move_piece([0,3], [4,7]) #d8 -> h4
-# puts b.in_check?("white")
-# puts b.checkmate?("white")
+c = b.dup
+c.move_piece([6,5],[5,5]) 
+
+
