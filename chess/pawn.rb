@@ -16,7 +16,7 @@ class Pawn < Piece
             if self.color == "white"
                 result << [x-2, y] if self.board[[x-2, y]].is_a?(NullPiece)
             else
-                result << [x+2, y] if self.board[[x-2, y]].is_a?(NullPiece)
+                result << [x+2, y] if self.board[[x+2, y]].is_a?(NullPiece)
             end
         end
 

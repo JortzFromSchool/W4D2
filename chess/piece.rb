@@ -8,10 +8,6 @@ class Piece
     # def moves()
     #     return nil
     # end
-    attr_reader :position, :color
-end
-
-class NullPiece < Piece
-    def initialize
-    end
+    attr_reader :color
+    attr_accessor :position
 end

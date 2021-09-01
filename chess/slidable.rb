@@ -11,9 +11,12 @@ module Slidable
         # or until we're off the board and add all those moves to our return array
         directions.each do |direction|
             x , y = @position[0], @position[1]
-            until (x <= 0 || x >= 7 || y <= 0 || y >= 7)
-                x += direction[0]
-                y += direction[1]
+
+            x += direction[0]
+            y += direction[1]
+
+            until (x < 0 || x > 7 || y < 0 || y > 7)
+
                 # puts "x, y = "
                 # puts x.to_s 
                 # puts y.to_s
@@ -30,6 +33,8 @@ module Slidable
                     results << [x,y]
                     break
                 end
+                x += direction[0]
+                y += direction[1]
             end
         end
         #return our array
