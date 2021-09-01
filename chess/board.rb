@@ -126,8 +126,19 @@ class Board
         end
         return false
     end
+
+    def dup
+        #create a new board
+        @board.map do |row|
+            row.map do |piece|
+                return piece # has an @board instance variable that == original board
+            end
+        end
+
+        return new_board
+    end
     
-    attr_reader :board
+    attr_accessor :board
 end
 
 # b = Board.new
