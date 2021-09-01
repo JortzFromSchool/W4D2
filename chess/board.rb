@@ -127,7 +127,7 @@ class Board
         return false
     end
 
-    def dup
+    def duplicate
         #create a new board
         b = Board.new 
         b.board.each_with_index do |row, i|
