@@ -17,11 +17,6 @@ module Slidable
 
             until (x < 0 || x > 7 || y < 0 || y > 7)
 
-                # puts "x, y = "
-                # puts x.to_s 
-                # puts y.to_s
-                # puts "self.board[x,y].color = " 
-                # puts self.board[[x, y]].color
                 if self.board[[x, y]].is_a?(NullPiece)
                     #space is empty
                     results << [x,y]

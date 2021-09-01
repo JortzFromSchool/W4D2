@@ -73,5 +73,37 @@ class Board
         self[start_pos] = NullPiece.instance
     end
 
+    def in_check?(color)
+        king_pos = nil
+        @board.each do |row|
+            row.each do |piece|
+                if piece.is_a?(King) && piece.color == color
+                    king_pos = piece.position
+                end
+            end
+        end
+
+        @board.each do |row|
+            row.each do |piece|
+                unless piece.color == color || piece.is_a?(NullPiece)
+                    return true if piece.moves.include?(king_pos)
+                end
+            end
+        end
+
+        return false
+    end
+
+    def checkmate?(color)
+        
+    end
+    
     attr_reader :board
 end
+
+# b = Board.new
+# b.move_piece([6,5],[5,5]) #f2 -> f3
+# b.move_piece([1,4], [3,4]) #e7 -> e5
+# b.move_piece([6,6],[4,6]) #g2 -> g4
+# b.move_piece([0,3], [4,7]) #d8 -> h4
+# puts b.in_check?("white")

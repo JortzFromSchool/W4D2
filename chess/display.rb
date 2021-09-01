@@ -46,7 +46,7 @@ class Display
 
     attr_reader :cursor_pos, :board, :cursor
 end
-b = Board.new
-d = Display.new([0,0], b)
+# b = Board.new
+# d = Display.new([0,0], b)
 
-d.run
+# d.run
